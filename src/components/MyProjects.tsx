@@ -1,20 +1,45 @@
-import React from 'react'
+'use-client'
+import React, { useRef } from 'react'
 import MaxWidthWrapper from './MaxWidthWrapper'
 import { PROJECTS } from '@/constants/HomePageConstants'
 import { TooltipContent, TooltipProvider } from '@radix-ui/react-tooltip'
 import { Tooltip, TooltipTrigger } from './ui/tooltip'
-
+import {motion, useInView} from 'framer-motion'
 const MyProjects = () => {
+  const ref=useRef<any>();
+  const isInView=useInView(ref,{
+    once:true,
+  })
+  const ref2=useRef<any>();
+  const isInView2=useInView(ref2,{
+    once:true
+  })
   return (
-    <section className='bg-[#0e100f] text-[#ffffe3] my-20'>
+    <section ref={ref} className='bg-[#0e100f] text-[#ffffe3] my-20'>
   
       <p className="text-center text-2xl font-semibold text-[#a87aff]">MY PROJECTS</p>
       <div>
         <div className='h-[1px] border-color mt-8'/>
       </div>
-        <div className='md:grid md:grid-cols-2 lg:hidden gap-10 flex flex-col'>
+      {
+      !isInView?<></>:
+        <div ref={ref} className='md:grid md:grid-cols-2 lg:hidden gap-10 flex flex-col'>
           {PROJECTS.map((project,index)=>{
-            return <div key={index} className='cursor-pointer' onClick={()=>{window.open(project.url,'_blank')}}>
+            return <motion.div
+            initial={{
+              opacity:0,
+              translateX:-20,
+            }}
+            animate={{
+              opacity:100,
+              translateX:[-20,5,0]
+            }}
+            transition={{
+              duration:1+1*index,
+              ease:'linear',
+              delay:0.5,
+            }}
+            key={index} className='cursor-pointer' onClick={()=>{window.open(project.url,'_blank')}}>
               <div>
               <div className={` mb-4 ${index%2&&'lg:order-last'} border-[2px] border-white/20 rounded-md p-[1px] `}>
                     <img src={project.image} className='object-cover min-h-[200px]'/>
@@ -35,16 +60,32 @@ const MyProjects = () => {
                         <h2>{project.date}</h2>
                     </div>
               </div>
-            </div>
+            </motion.div>
           })}
         </div>
-
+        } 
         {/*For large screens*/}
-        <div className='hidden lg:block'>
+        
+        <div ref={ref2}>
+        {
+  
+        !isInView2?<></>:
+        <div className='hidden lg:block min-h-3 min-w-3'>
           <div className=''>
             {
               PROJECTS.map((project,index)=>{
-                return <div key={index} className=''>
+                return <motion.div 
+                initial={{
+                  opacity:0,
+                }}
+                animate={{
+                  opacity:100,
+                }}
+                transition={{
+                  ease:'linear',
+                  duration:1+index*1,
+                }}
+                key={index} className=''>
                 <TooltipProvider >
                   <Tooltip delayDuration={0.1}>
                     <TooltipTrigger className='w-full'>
@@ -75,10 +116,12 @@ const MyProjects = () => {
             </Tooltip>
 
                 </TooltipProvider>
-              </div>
+              </motion.div>
               })
             }
           </div>
+        </div>
+        }
         </div>
         </section>
   )

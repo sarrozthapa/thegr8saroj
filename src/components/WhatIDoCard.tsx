@@ -9,7 +9,7 @@ interface props{
     icon:ReactNode
 }
 const DELAY=0.4;
-const INITIAL_DELAY=0.3;
+const INITIAL_DELAY=0.5;
 const WhatIDoCard = ({index,title,description,color,icon}:props) => {
     const ref=useRef<any>();
     const isInView=useInView(ref,{
