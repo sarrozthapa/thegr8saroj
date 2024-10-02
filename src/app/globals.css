@@ -2,32 +2,323 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+#inputFile::-webkit-file-upload-button {
+  visibility: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
+#inputFile::before {
+  content: 'Drag or Drop an image';
+}
+
+
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+
+/*.slide{
+  animation-name:slide;
+  animation-duration:3s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes slide{
+  0%{
+    transform:translateX(0px);
+  }
+  25%{
+    transform:translateX(-50px);
+  }
+  50%{
+    transform:translateX(-100px);
+  }
+  75%{
+    transform:translateX(-150px);
+  }
+  75%{
+    transform:translateX(-200px);
+  }
+}*/
+.transition{
+  animation-name:grow;
+  animation-duration:3s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: both;
+}
+
+@keyframes grow{
+  0%{
+   width:208px; 
+   height:208px;
+   background-color: green;
+  }
+  50%{
+   width:208px; 
+   height:208px;
+   background-color: pink;
+  }
+  
+  75%{
+    width:108px; 
+    height:108px;
+    background-color: yellow;
+  }
+  100%{
+    width:208px; 
+    height:208px;
+    background-color: purple;
+   }
+}
+.transition:hover{
+  animation-iteration-count: 0;
+}
+
+.home{
+  animation:home ease 1s ;
+}
+
+@keyframes home{
+  from{
+    width:0%;
+  }
+  to{
+    width:100%;
+  }
+}
+
+.spin{
+  animation:spin linear 2s infinite;
+}
+@keyframes spin{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+
+.ok{
+  left:45px;
+  background-color: yellow;
+  animation:main ease 1s forwards;
+}
+
+.temp{
+  left:4px;
+}
+
+
+@keyframes main{
+  to{
+    left:4px;
+    background-color:white;
+  }
+}
+
+.first{
+  padding:20px;
+  transition:padding 0.5s linear;
+  animation:cls2 ease 1s forwards;
+}
+.first:hover{
+  animation:cls1 ease 1s forwards; 
+}
+
+@keyframes cls1{
+  to{
+    padding:50px;
+  }
+}
+@keyframes cls2{
+  from{
+    padding:50px;
+  }
+  to{
+    padding:20px;
+  }
+}
+
+/* border-[0.5px] border-white/20 */
+.text-box{
+  border-width:0.5px;
+  border-color:rgb(255 255 255 / 0.2);
+  border-radius:9999px;
+}
+
+.border-bottom{
+  border-bottom-width:0.5px;
+  border-color:rgb(255 255 255 / 0.2);
+}
+
+.full-rounded-border{
+  border-width:0.5px;
+  border-color:rgb(255 255 255 / 0.2);
+}
+.border-color{
+  background-color:#ffffff33;
+}
+
+input::placeholder {
+  color: #ffffff33;
+  opacity: 1; /* Firefox */
+}
+input::-ms-input-placeholder { /* Edge 12 -18 */
+  color: #ffffff33;
+}
+.explore:hover .explore-text{
+  transition:all;
+  color:rgb(96 165 250 / var(--tw-text-opacity));
+}
+
+.explore:hover .explore-icon{
+  transition:all 0.2s;
+  rotate:-35deg;
+}
+.blue-hover-text{
+  font-size:17px;
+}
+.blue-hover-text:hover{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  color:rgb(96 165 250 / var(--tw-text-opacity));
+}
+
+.send-button:hover{
+  transform:translate(-5px,-5px);
+}
+
+.logos{
+  display:flex;
+  overflow: hidden;
+  position:relative;
+  padding: 30px 0;
+  cursor: pointer;
+}
+
+.logos-before,.logos-after{
+  height:100%;
+  width:100px;
+  z-index:2;
+  top:0;
+  position:absolute;
+}
+.logos-before{
+  left:0;
+  background: linear-gradient(to left,rgba(14,16,15,0),rgb(14, 16, 15));
+}
+.logos-after{
+  right:0;
+  background: linear-gradient(to right,rgba(14,16,15,0),rgb(14, 16, 15));
+
+}
+.logos-slide{
+  display:flex;
+   animation:5s slide infinite linear; 
+}
+
+.logos:hover .logos-slide{
+  animation-play-state: paused;
+}
+.logos-slide div{
+  width: 70px;
+  height:70px;
+  margin:0 15px;
+}
+
+.project-parent:hover .project-title{
+  color:rgb(59 130 246 / var(--tw-bg-opacity));
+}
+.project-left, .project-right{
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+.project-parent:hover .project-left{
+  transform:translateX(50px);
+
+}
+
+.project-parent:hover .project-right{
+  transform:translateX(-60px);
+}
+
+
+@media screen and (min-width:700px){
+  .logos-slide div{
+    margin:0 25px
+  }
+}
+@keyframes slide {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
   }
 }
