@@ -26,8 +26,8 @@ export const PROJECTS=[
             'User authentication',
             'Role based authorization (admin, employee, customer)',
             'Real time chat functionality for employees',
-            'Admin can assing tasks to employees',
-            'Employees can view their assigned tasks and change the status of work progres(Pending, Working, Complete)',
+            'Admin can assign tasks to employees',
+            'Employees can view their assigned tasks and change the status of work progres(Pending, Working, Completed)',
             'Customers can view the progress of their device repair'
         ],
         date:2024,

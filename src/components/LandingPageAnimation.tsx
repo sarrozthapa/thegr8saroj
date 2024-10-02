@@ -8,7 +8,7 @@ import { Scale } from 'lucide-react'
 
 const FIRST_DURATION=0.7;
 const NORMAL_DURATION=0.2;
-const TEXT=['Hola','Bonjour','Ola','Namaste']
+const TEXT=['Hola','你好','হ্যালো','Bonjour','नमस्ते']
 const Z_INDEX=110;
 const LandingPageAnimation = () => {
   return (

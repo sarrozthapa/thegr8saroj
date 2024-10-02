@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
     <LandingPageAnimation/>
-    <div className="pb-10 pt-[120px]">
+    <div className="pb-10 pt-[70px] md:pt-[80px] lg:pt-[120px]">
       {/*HeroSection*/}
       <HeroSection/>
       

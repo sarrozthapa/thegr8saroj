@@ -62,7 +62,7 @@ const HeroSection = () => {
               </motion.div>
             </div>
 
-            <div className="flex flex-col items-center mt-3 text-lg lg:text-2xl tracking-wide">
+            <div className="flex flex-col text-center items-center mt-3 text-lg lg:text-2xl tracking-wide">
               <p>I create a digital experience that borders on</p>
               <p><span className='text-[#a477ff]'>efficiency</span>, <span className="text-[#ffdb78]">aesthetics</span> and <span className="text-[#17f3d2]">functionality</span>.</p>
             </div>
